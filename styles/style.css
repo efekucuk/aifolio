@@ -1,0 +1,612 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f7f7;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent: #937264;
+    --border: #e0e0e0;
+    --hover: #f0f0f0;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-transform: lowercase;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-sm);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.glitch-text {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: var(--spacing-xs);
+    color: var(--accent);
+}
+
+.intro-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-md);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.nav-btn, a.nav-btn {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 70px;
+    text-align: center;
+    height: 32px; /* Add fixed height */
+    line-height: 1; /* Adjust line height */
+}
+
+.nav-btn:hover, a.nav-btn:hover {
+    background: var(--hover);
+    color: var(--text-primary);
+}
+
+.nav-btn.active, a.nav-btn.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+.ama-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 300px;
+}
+
+.ama-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.question-input {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+#userInput {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-primary);
+    transition: all 0.2s ease;
+}
+
+#sendBtn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--bg-primary);
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px; /* Add fixed height */
+    line-height: 1; /* Adjust line height */
+}
+
+.qa-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.qa-item {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.qa-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.question {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.answer {
+    color: var(--text-secondary);
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.qa-item {
+    animation: fadeInSlideUp 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-md: 1rem;
+        --font-size-lg: 1.125rem;
+    }
+
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .glitch-text {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .intro-text {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-md);
+        max-width: 90%;
+    }
+
+    nav {
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .nav-btn, a.nav-btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
+        min-width: auto;
+        height: 28px; /* Adjust height for mobile */
+    }
+
+    .ama-container {
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .ama-title {
+        font-size: var(--font-size-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .question-input {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    #userInput {
+        width: 100%;
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        -webkit-appearance: none; /* Fix for iOS input styling */
+        appearance: none;
+    }
+
+    #sendBtn {
+        width: 100%;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+        border-radius: var(--radius-sm);
+    }
+
+    .qa-item {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .question, .answer {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+
+    .social-icons {
+        gap: var(--spacing-md);
+    }
+
+    .social-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    footer {
+        padding: var(--spacing-md) 0;
+    }
+
+    footer p {
+        font-size: var(--font-size-xs);
+    }
+}
+
+/* Enhance mobile aesthetics */
+@media (max-width: 768px) {
+    body {
+        background-color: var(--bg-secondary);
+    }
+
+    .container {
+        background-color: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    .ama-container {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .question-input {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    #userInput {
+        width: 100%;
+        border: 1px solid var(--border);
+    }
+
+    #sendBtn {
+        width: 100%;
+    }
+
+    .qa-item {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+    }
+
+    .question {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .social-icons {
+        background: var(--bg-secondary);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+    }
+}
+
+/* Add smooth transitions */
+.nav-btn, #userInput, #sendBtn, .qa-item, .social-icon {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Enhance hover effects for touch devices */
+@media (hover: hover) {
+    .nav-btn:hover, #sendBtn:hover, .social-icon:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Add styles for a more compact layout on very small screens */
+@media (max-width: 360px) {
+    .nav-btn, a.nav-btn {
+        padding: var(--spacing-xs) var(--spacing-xs);
+        min-width: 50px;
+    }
+
+    .ama-container {
+        padding: var(--spacing-xs);
+    }
+
+    .question, .answer {
+        padding: var(--spacing-xs);
+    }
+}
+
+/* Enhance the visual appeal of the AMA container */
+.ama-container {
+    background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.qa-item {
+    transition: all 0.3s ease;
+}
+
+.qa-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a subtle animation to the ask button */
+#sendBtn {
+    transition: all 0.3s ease;
+}
+
+#sendBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Improve the appearance of the input field */
+#userInput {
+    transition: all 0.3s ease;
+}
+
+#userInput:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Add a subtle animation to social icons */
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure all text is lowercase */
+body, input, button {
+    text-transform: lowercase;
+}
+
+/* Add these new styles for the footer */
+footer {
+    margin-top: auto;
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+footer p {
+    margin-bottom: var(--spacing-xs);
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--text-primary);
+}
+
+/* Add these styles to your existing CSS */
+
+.about-container, .blog-container {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.about-container h2, .blog-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-container p, .blog-container p {
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-post {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow);
+}
+
+.blog-post h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.2s ease;
+}
+
+.read-more-btn:hover {
+    opacity: 0.9;
+}
+
+/* Styles for social icons in footer */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Add these new styles for the block effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.block-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.block-message {
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  animation: glitch 0.3s infinite;
+  text-shadow: 2px 2px var(--text-primary);
+}
+
+.block-overlay.visible {
+  opacity: 1;
+}
+
+.ama-container.blocked {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .block-message {
+    font-size: 1.5rem;
+  }
+}
+
+/* Ensure input is tappable on mobile */
+@media (hover: none) and (pointer: coarse) {
+    #userInput, #sendBtn {
+        min-height: 44px; /* Minimum tappable area size */
+    }
+}
+

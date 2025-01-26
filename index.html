@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>satoshi's aifolio</title>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    
+    <meta name="description" content="ask satoshi anything - a minimalist ama experience">
+    <meta property="og:title" content="satoshi's aifolio">
+    <meta property="og:description" content="ask satoshi anything - a minimalist ama experience">
+    <meta property="og:image" content="/og-image.jpg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glitch-text">satoshi's aifolio</h1>
+            <p class="intro-text">i created bitcoin. ask me about cryptography, distributed systems, or financial sovereignty.</p>
+            <nav>
+                <button class="nav-btn active" data-section="chat">chat</button>
+                <button class="nav-btn" data-section="about">about</button>
+                <button class="nav-btn" data-section="papers">papers</button>
+                <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer" class="nav-btn">
+                    whitepaper
+                    <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+                <a href="mailto:satoshi@bitcoin.org" class="nav-btn">
+                    contact
+                    <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="chat" class="content-section active">
+                <div class="ama-container">
+                    <h2 class="ama-title">ask me anything</h2>
+                    <div class="question-input">
+                        <input 
+                            type="text" 
+                            id="userInput" 
+                            placeholder="what would you like to know about me?"
+                        >
+                        <button id="sendBtn">ask</button>
+                    </div>
+                    <div class="qa-list" id="qaList">
+                        <!-- Q&A pairs will be added here dynamically -->
+                    </div>
+                </div>
+            </section>
+            
+            <section id="about" class="content-section">
+                <div class="about-container">
+                    <h2>about</h2>
+                    <p>i created bitcoin to introduce a peer-to-peer electronic cash system that eliminates the need for trusted third parties.</p>
+                    <p>through the combination of cryptography, game theory, and distributed systems, we solved the double-spending problem and created the first decentralized consensus mechanism.</p>
+                    <p>this website is a template for creating your own ai-powered portfolio. fork it on github and make it yours.</p>
+                    <p>questions about the code? <a href="https://github.com/yourusername/aifolio" target="_blank">check the repo</a>.</p>
+                </div>
+            </section>
+            
+            <section id="papers" class="content-section">
+                <div class="papers-container">
+                    <h2>papers</h2>
+                    <div class="paper-list">
+                        <div class="paper">
+                            <h3>bitcoin: a peer-to-peer electronic cash system</h3>
+                            <p>the original bitcoin whitepaper, published october 31, 2008.</p>
+                            <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" class="read-more-btn">read paper</a>
+                        </div>
+                        <div class="paper">
+                            <h3>bitcoin v0.1 released</h3>
+                            <p>announcement of the first bitcoin software release, january 9, 2009.</p>
+                            <a href="https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html" target="_blank" class="read-more-btn">read announcement</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="social-icons">
+                <a href="https://bitcointalk.org/index.php?action=profile;u=3" target="_blank" class="social-icon" aria-label="Bitcoin Talk">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </a>
+                <a href="https://github.com/yourusername/aifolio" target="_blank" class="social-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="mailto:satoshi@bitcoin.org" class="social-icon" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+            </div>
+            <p>proof of work > proof of talk</p>
+        </footer>
+    </div>
+    <script src="scripts/chat.js"></script>
+    <script src="scripts/navigation.js"></script>
+</body>
+</html>

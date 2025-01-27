@@ -1,6 +1,6 @@
 # aifolio 🤖
 
-a minimalist ai-powered portfolio template that creates an interactive ama (ask me anything) experience. built with modern web technologies and the groq ai platform.
+a minimalist ai-powered portfolio template that creates an interactive ama (ask me anything) experience
 
 ## live demo 🌐
 
@@ -128,7 +128,7 @@ contributions welcome! please feel free to submit a pull request.
 
 ## credits 👏
 
-originally crafted by [efe kucuk](https://github.com/efekucuk), now open for all.
+originally crafted by me, [efeuc.uk](https://github.com/efekucuk), now open for all.
 
 ## license 📄
 
@@ -136,4 +136,4 @@ mit - see the [license](LICENSE) file for details.
 
 ## support 💬
 
-got questions? open an issue or check the [discussions](https://github.com/yourusername/aifolio/discussions). 
+got questions? open an issue or check the [discussions](https://github.com/efekucuk/aifolio/discussions). 
